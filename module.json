@@ -1,0 +1,28 @@
+{
+  "id": "foundry-webhook",
+  "title": "Foundry Webhook",
+  "description": "Sends real-time webhook notifications to an external API whenever documents (Actors, Items, Scenes, Journals, etc.) are created, updated, or deleted.",
+  "authors": [
+    {
+      "name": "rauscher"
+    }
+  ],
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "14"
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "https://github.com/rauscher/foundry-webhook-module",
+  "manifest": "https://github.com/rauscher/foundry-webhook-module/releases/latest/download/module.json",
+  "download": "https://github.com/rauscher/foundry-webhook-module/releases/download/v1.0.0/foundry-webhook.zip"
+}

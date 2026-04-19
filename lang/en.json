@@ -1,0 +1,16 @@
+{
+  "FOUNDRY_WEBHOOK.settings.webhookUrl.name": "Webhook URL",
+  "FOUNDRY_WEBHOOK.settings.webhookUrl.hint": "The endpoint URL where document change events will be sent via POST request.",
+  "FOUNDRY_WEBHOOK.settings.apiSecret.name": "API Secret",
+  "FOUNDRY_WEBHOOK.settings.apiSecret.hint": "Shared secret used to generate an HMAC-SHA256 signature for each request. Your API can verify the X-Foundry-Signature header to ensure authenticity.",
+  "FOUNDRY_WEBHOOK.settings.debounceMs.name": "Debounce Interval (ms)",
+  "FOUNDRY_WEBHOOK.settings.debounceMs.hint": "How long to wait (in milliseconds) before sending batched changes. Lower values mean faster updates; higher values reduce request volume. Default: 2000.",
+  "FOUNDRY_WEBHOOK.settings.filterRules.name": "Filter Rules",
+  "FOUNDRY_WEBHOOK.settings.filterRules.hint": "JSON configuration for which document types, subtypes, and operations to track.",
+  "FOUNDRY_WEBHOOK.settings.filterConfig.name": "Filter Configuration",
+  "FOUNDRY_WEBHOOK.settings.filterConfig.label": "Configure Filters",
+  "FOUNDRY_WEBHOOK.settings.filterConfig.hint": "Open the filter configuration to choose which document types, subtypes (e.g. character vs npc), and operations (create/update/delete) trigger webhook events.",
+  "FOUNDRY_WEBHOOK.notifications.sendSuccess": "Webhook: Sent {count} event(s) successfully.",
+  "FOUNDRY_WEBHOOK.notifications.sendFailed": "Webhook: Failed to send events after {attempts} attempts.",
+  "FOUNDRY_WEBHOOK.notifications.noUrl": "Webhook: No URL configured. Go to Module Settings to set up the webhook endpoint."
+}

@@ -1,0 +1,55 @@
+<form autocomplete="off">
+  <p class="notes">
+    Configure which document types, subtypes, and operations trigger webhook events.
+    Leave the <strong>Subtypes</strong> field empty to track <em>all</em> subtypes.
+    To filter specific subtypes, enter a comma-separated list (e.g. <code>character</code> or <code>character, vehicle</code>).
+    Subtypes are system-specific — in D&amp;D 5e, Actors have subtypes like <code>character</code> and <code>npc</code>.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem;">
+    <thead>
+      <tr style="border-bottom: 2px solid var(--color-border-dark);">
+        <th style="text-align: left; padding: 4px 8px;">Enabled</th>
+        <th style="text-align: left; padding: 4px 8px;">Document Type</th>
+        <th style="text-align: left; padding: 4px 8px;">Subtypes</th>
+        <th style="text-align: center; padding: 4px 8px;">Create</th>
+        <th style="text-align: center; padding: 4px 8px;">Update</th>
+        <th style="text-align: center; padding: 4px 8px;">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rows}}
+      <tr style="border-bottom: 1px solid var(--color-border-light-tertiary);">
+        <td style="text-align: center; padding: 4px 8px;">
+          <input type="checkbox" name="{{documentType}}.enabled" {{#if enabled}}checked{{/if}} />
+        </td>
+        <td style="padding: 4px 8px; font-weight: bold;">{{documentType}}</td>
+        <td style="padding: 4px 8px;">
+          {{#if hasSubtypes}}
+          <input type="text" name="{{documentType}}.subtypes" value="{{subtypesText}}"
+                 placeholder="all (leave empty)" style="width: 100%;" />
+          {{else}}
+          <span style="color: var(--color-text-dark-secondary); font-style: italic;">n/a</span>
+          <input type="hidden" name="{{documentType}}.subtypes" value="" />
+          {{/if}}
+        </td>
+        <td style="text-align: center; padding: 4px 8px;">
+          <input type="checkbox" name="{{documentType}}.op_create" {{#if opCreate}}checked{{/if}} />
+        </td>
+        <td style="text-align: center; padding: 4px 8px;">
+          <input type="checkbox" name="{{documentType}}.op_update" {{#if opUpdate}}checked{{/if}} />
+        </td>
+        <td style="text-align: center; padding: 4px 8px;">
+          <input type="checkbox" name="{{documentType}}.op_delete" {{#if opDelete}}checked{{/if}} />
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <footer class="sheet-footer flexrow" style="margin-top: 1rem;">
+    <button type="submit" name="submit">
+      <i class="fas fa-save"></i> Save Filter Rules
+    </button>
+  </footer>
+</form>
