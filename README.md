@@ -21,7 +21,7 @@ Instead of polling Foundry on a cron schedule, install this module and receive p
 1. In Foundry VTT, go to **Add-on Modules** → **Install Module**
 2. Paste the manifest URL into the **Manifest URL** field:
    ```
-   https://github.com/rauscher/foundry-webhook-module/releases/latest/download/module.json
+   https://github.com/Rauscher1/FoundryWebhookModule/releases/latest/download/module.json
    ```
 3. Click **Install**
 
