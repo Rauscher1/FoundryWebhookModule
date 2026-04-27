@@ -40,6 +40,11 @@ const DOCUMENT_CLASSES = {
 };
 
 let pollTimer = null;
+let _suppressWebhooks = false;
+
+export function isSuppressingWebhooks() {
+  return _suppressWebhooks;
+}
 
 function isActiveGM() {
   return game.user === game.users.activeGM;
@@ -188,10 +193,16 @@ async function pollCycle() {
 
   console.log(`Foundry Webhook | Processing ${commands.length} inbound command(s).`);
 
+  _suppressWebhooks = true;
+
   const results = [];
-  for (const command of commands) {
-    const result = await executeCommand(command);
-    results.push(result);
+  try {
+    for (const command of commands) {
+      const result = await executeCommand(command);
+      results.push(result);
+    }
+  } finally {
+    _suppressWebhooks = false;
   }
 
   await acknowledgeResults(results);

@@ -1,5 +1,6 @@
 import { getTrackedTypes, shouldTrackEvent } from './settings.js';
 import { queueEvent } from './webhook.js';
+import { isSuppressingWebhooks } from './command-poller.js';
 
 const OPERATIONS = ['create', 'update', 'delete'];
 
@@ -26,6 +27,10 @@ function isActiveGM() {
 
 function onDocumentChange(operation, documentType, args) {
   if (!isActiveGM()) {
+    return;
+  }
+
+  if (isSuppressingWebhooks()) {
     return;
   }
 

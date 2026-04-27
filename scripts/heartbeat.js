@@ -21,12 +21,22 @@ function isActiveGM() {
 }
 
 function buildHeartbeatPayload(type) {
-  return {
+  const payload = {
     worldId: game.world.id,
     worldTitle: game.world.title,
     timestamp: new Date().toISOString(),
     heartbeat: type,
   };
+
+  if (type === HEARTBEAT_TYPE_START) {
+    payload.users = game.users.map(u => ({
+      id: u.id,
+      name: u.name,
+      role: u.role,
+    }));
+  }
+
+  return payload;
 }
 
 async function hmacSha256(secret, message) {
