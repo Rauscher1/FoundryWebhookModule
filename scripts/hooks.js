@@ -1,5 +1,6 @@
 import { getTrackedTypes, shouldTrackEvent } from './settings.js';
 import { queueEvent } from './webhook.js';
+import { isSuppressingWebhooks } from './command-poller.js';
 
 const OPERATIONS = ['create', 'update', 'delete'];
 
@@ -26,6 +27,10 @@ function isActiveGM() {
 
 function onDocumentChange(operation, documentType, args) {
   if (!isActiveGM()) {
+    return;
+  }
+
+  if (isSuppressingWebhooks()) {
     return;
   }
 
@@ -60,18 +65,11 @@ function onDocumentChange(operation, documentType, args) {
 }
 
 function buildPayload(operation, document, changed) {
-  if (operation === 'delete') {
-    return { id: document.id, name: document.name ?? null };
-  }
+  const full = document.toObject();
 
   if (operation === 'update' && changed) {
-    return {
-      id: document.id,
-      name: document.name ?? null,
-      changed,
-    };
+    return { ...full, _changed: changed };
   }
 
-  // create — send the full source data
-  return document.toObject();
+  return full;
 }

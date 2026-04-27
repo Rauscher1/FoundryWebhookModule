@@ -52,6 +52,29 @@ export function registerSettings() {
     },
   });
 
+  game.settings.register(MODULE_ID, 'commandPollUrl', {
+    name: 'FOUNDRY_WEBHOOK.settings.commandPollUrl.name',
+    hint: 'FOUNDRY_WEBHOOK.settings.commandPollUrl.hint',
+    scope: 'world',
+    config: true,
+    type: String,
+    default: '',
+  });
+
+  game.settings.register(MODULE_ID, 'pollIntervalSeconds', {
+    name: 'FOUNDRY_WEBHOOK.settings.pollIntervalSeconds.name',
+    hint: 'FOUNDRY_WEBHOOK.settings.pollIntervalSeconds.hint',
+    scope: 'world',
+    config: true,
+    type: Number,
+    default: 10,
+    range: {
+      min: 5,
+      max: 60,
+      step: 5,
+    },
+  });
+
   game.settings.register(MODULE_ID, 'filterRules', {
     name: 'FOUNDRY_WEBHOOK.settings.filterRules.name',
     hint: 'FOUNDRY_WEBHOOK.settings.filterRules.hint',
