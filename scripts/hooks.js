@@ -60,18 +60,11 @@ function onDocumentChange(operation, documentType, args) {
 }
 
 function buildPayload(operation, document, changed) {
-  if (operation === 'delete') {
-    return { id: document.id, name: document.name ?? null };
-  }
+  const full = document.toObject();
 
   if (operation === 'update' && changed) {
-    return {
-      id: document.id,
-      name: document.name ?? null,
-      changed,
-    };
+    return { ...full, _changed: changed };
   }
 
-  // create — send the full source data
-  return document.toObject();
+  return full;
 }

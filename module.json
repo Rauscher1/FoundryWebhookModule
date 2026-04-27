@@ -1,13 +1,13 @@
 {
   "id": "foundry-webhook",
   "title": "Foundry Webhook",
-  "description": "Sends real-time webhook notifications to an external API whenever documents (Actors, Items, Scenes, Journals, etc.) are created, updated, or deleted.",
+  "description": "Bidirectional sync between Foundry VTT and an external API. Sends full document data via webhooks on create/update/delete, and accepts inbound commands to create, update, or delete documents from your website.",
   "authors": [
     {
       "name": "rauscher"
     }
   ],
-  "version": "1.0.1",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": "11",
     "verified": "14"
@@ -24,5 +24,5 @@
   ],
   "url": "https://github.com/Rauscher1/FoundryWebhookModule",
   "manifest": "https://github.com/Rauscher1/FoundryWebhookModule/releases/latest/download/module.json",
-  "download": "https://github.com/Rauscher1/FoundryWebhookModule/releases/download/v1.0.1/foundry-webhook.zip"
+  "download": "https://github.com/Rauscher1/FoundryWebhookModule/releases/download/v2.0.0/foundry-webhook.zip"
 }
